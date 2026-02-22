@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lost Currents | THE ULTIMATE WIKI 2026</title>
+    <style>
+        :root {
+            --bg-deep: #020617;
+            --panel-bg: #0f172a;
+            --electric-blue: #38bdf8;
+            --text-main: #f1f5f9;
+            --text-dim: #94a3b8;
+            --nav-bg: rgba(15, 23, 42, 0.98);
+            --danger: #ef4444;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --boss: #a855f7;
+            --gold: #fbbf24;
+            --secret: #f472b6;
+        }
+
+        /* Animações */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-deep); color: var(--text-main); margin: 0; overflow-x: hidden; }
+
+        nav { background: var(--nav-bg); padding: 15px 0; position: fixed; top: 0; width: 100%; z-index: 1000; border-bottom: 2px solid var(--electric-blue); backdrop-filter: blur(10px); }
+        .nav-container { max-width: 1200px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+        .nav-logo { font-weight: 900; color: var(--electric-blue); font-size: 1.4rem; cursor: pointer; }
+
+        #main-wiki, #detail-page { animation: fadeIn 0.4s ease-out; }
+        #detail-page { display: none; padding-top: 100px; max-width: 1000px; margin: 0 auto; padding-bottom: 50px; }
+
+        header { background: linear-gradient(180deg, rgba(2, 6, 23, 0.8) 0%, var(--bg-deep) 100%), url('https://images.unsplash.com/photo-1551244072-5d12893278ab?auto=format&fit=crop&w=1200&q=80'); background-size: cover; height: 250px; display: flex; justify-content: center; align-items: center; margin-top: 50px; }
+        
+        .container { max-width: 1200px; margin: -40px auto 50px; padding: 0 20px; }
+        .grid { display: grid; grid-template-columns: 3fr 1fr; gap: 30px; }
+
+        section { background: var(--panel-bg); padding: 25px; border-radius: 15px; margin-bottom: 30px; border: 1px solid rgba(255, 255, 255, 0.05); }
+        h2 { color: var(--electric-blue); text-transform: uppercase; font-size: 1.4rem; border-bottom: 1px solid #1e293b; padding-bottom: 8px; }
+
+        /* Estilo das Tabelas */
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { text-align: left; padding: 12px; border-bottom: 1px solid #1e293b; font-size: 0.9rem; }
+        th { color: var(--electric-blue); }
+
+        /* Cards Clicáveis */
+        .info-card { background: rgba(30, 41, 59, 0.4); padding: 15px; border-radius: 10px; margin-bottom: 10px; border-left: 4px solid var(--electric-blue); cursor: pointer; transition: 0.3s; }
+        .info-card:hover { transform: translateX(10px); background: rgba(56, 189, 248, 0.1); border-left-color: var(--gold); }
+
+        .badge { padding: 3px 6px; border-radius: 4px; font-size: 0.7rem; font-weight: bold; text-transform: uppercase; margin-right: 5px; }
+        .b-boss { background: var(--boss); }
+        .b-danger { background: var(--danger); }
+        .b-secret { background: var(--secret); }
+
+        .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 15px; margin: 25px 0; }
+        .stat-card { background: #1e293b; padding: 15px; border-radius: 10px; text-align: center; }
+        .stat-card b { display: block; color: var(--gold); font-size: 1.3rem; }
+
+        .back-btn { background: var(--electric-blue); color: #000; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: bold; margin-bottom: 20px; }
+
+        footer { text-align: center; padding: 40px; color: var(--text-dim); }
+        @media (max-width: 900px) { .grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+
+<nav>
+    <div class="nav-container">
+        <div class="nav-logo" onclick="goHome()">LOST CURRENTS OMEGA</div>
+        <div style="font-size: 0.7rem; color: var(--gold);">DATABASE LOADED 100%</div>
+    </div>
+</nav>
+
+<div id="main-wiki">
+    <header><h1>LOST CURRENTS MASTER ARCHIVE</h1></header>
+
+    <div class="container">
+        <div class="grid">
+            <main>
+                <section id="ships">
+                    <h2>🚢 Fleet & Vessels</h2>
+                    <table>
+                        <tr><th>Vessel</th><th>HP</th><th>Cost</th></tr>
+                        <tr onclick="animateDetail('dreadnought')" style="cursor:pointer"><td><strong>Abyssal Dreadnought</strong></td><td>5000</td><td>15,000G</td></tr>
+                        <tr onclick="animateDetail('marauder')" style="cursor:pointer"><td>Oceanic Marauder</td><td>1200</td><td>5,500G</td></tr>
+                        <tr><td>Iron Scout</td><td>450</td><td>1,200G</td></tr>
+                    </table>
+                </section>
+
+                <section id="craft">
+                    <h2>🛠️ Crafting Recipes</h2>
+                    <table>
+                        <tr><th>Result</th><th>Ingredients</th></tr>
+                        <tr><td>Oxygen Tank MK2</td><td>2x Iron, 1x Rubber</td></tr>
+                        <tr><td>Diving Suit MK4</td><td>1x Abyssal Shard, 5x Lead</td></tr>
+                    </table>
+                </section>
+
+                <section id="bestiary">
+                    <h2>🦈 Full Bestiary</h2>
+                    <div class="info-card" onclick="animateDetail('leviathan')"><span class="badge b-boss">Boss</span> <strong>The Leviathan</strong></div>
+                    <div class="info-card" onclick="animateDetail('stalker')"><span class="badge b-danger">Apex</span> <strong>The Stalker</strong></div>
+                    <div class="info-card" onclick="animateDetail('angler')"><span class="badge b-danger">Elite</span> <strong>Titan Anglerfish</strong></div>
+                </section>
+
+                <section id="areas">
+                    <h2>🌍 Map Areas</h2>
+                    <div class="info-card" onclick="animateDetail('shallows')"><strong>Shallow Reefs</strong> (0m-150m)</div>
+                    <div class="info-card" onclick="animateDetail('midnight')"><strong>The Midnight Zone</strong> (800m+)</div>
+                    <div class="info-card" onclick="animateDetail('void')"><strong>The Void Abyss</strong> (4000m+)</div>
+                </section>
+
+                <section id="secrets">
+                    <h2 style="color:var(--secret)">🕵️ Secrets & Mysteries</h2>
+                    <div class="info-card" onclick="animateDetail('lab')"><span class="badge b-secret">Secret</span> <strong>Underwater Lab</strong></div>
+                    <div class="info-card" onclick="animateDetail('unsolved_signal')"><span class="badge" style="background:#64748b">???</span> <strong>Void Signal 104.2</strong></div>
+                </section>
+            </main>
+
+            <aside>
+                <section>
+                    <h3>🎫 Active Codes</h3>
+                    <p><b>CURRENT2026</b><br><small>100 Gold + Medkit</small></p>
+                    <p><b>ISLANDS</b><br><small>50 Gold + Flare</small></p>
+                </section>
+                <section>
+                    <h3>📈 Status</h3>
+                    <p><small><b>Leaks:</b> Fix with Torch.</small></p>
+                    <p><small><b>Pressure:</b> Needs Titanium.</small></p>
+                </section>
+            </aside>
+        </div>
+    </div>
+</div>
+
+<div id="detail-page">
+    <button class="back-btn" onclick="goHome()">← BACK TO DATABASE</button>
+    <div id="detail-content"></div>
+</div>
+
+<footer><p>Lost Currents Wiki &copy; 2026 | Comprehensive Version</p></footer>
+
+<script>
+    const database = {
+        // BARCOS
+        dreadnought: {
+            title: "Abyssal Dreadnought",
+            stats: { Cost: "15,000G", HP: "5,000", Speed: "40" },
+            desc: "The ultimate endgame vessel. Built with Leviathan scales and Void-resistant plating.",
+            loot: ["1x Abyssal Core", "50x Titanium", "20x Lead"],
+            tips: "Its passive 'Void Shield' prevents pressure damage for 10 minutes."
+        },
+        marauder: {
+            title: "Oceanic Marauder",
+            stats: { Cost: "5,500G", HP: "1,200", Speed: "25" },
+            desc: "A hunter ship designed for combat. It features dual heavy cannon mounts.",
+            loot: ["20x Iron Scrap", "10x Scrap Metal"],
+            tips: "Best ship for farming Reef Sharks and Stalkers."
+        },
+        // MONSTROS
+        leviathan: {
+            title: "The Leviathan",
+            stats: { HP: "25k", Dmg: "Fatal", Spawn: "Blood Moon" },
+            desc: "A prehistoric titan. Its roar disables all electronics on your ship temporarily.",
+            loot: ["Abyssal Core", "Ancient Scale"],
+            tips: "Target the blue vents on its side when it prepares to roar."
+        },
+        stalker: {
+            title: "The Stalker",
+            stats: { HP: "3,500", Speed: "Extreme", Weakness: "Flash" },
+            desc: "A bioluminescent hunter that is sensitive to light. It only appears in the Midnight Zone.",
+            loot: ["Stalker Skin", "Glow Essence"],
+            tips: "Turn off all boat lights and use Flare Guns to distract its charge."
+        },
+        // AREAS
+        shallows: {
+            title: "Shallow Reefs",
+            stats: { Depth: "0-150m", Temp: "24°C", Hazard: "Low" },
+            desc: "The sunlit starting area. Safe, bright, and full of basic scrap metal.",
+            loot: ["Iron", "Kelp", "Wood Scrap"],
+            tips: "The best place to repair and restock before going deeper."
+        },
+        void: {
+            title: "The Void Abyss",
+            stats: { Depth: "4000m+", Temp: "1°C", Hazard: "Lethal" },
+            desc: "The darkest point of the ocean. The pressure here will crush any ship but the Dreadnought.",
+            loot: ["Abyssal Shard", "Void Crystal"],
+            tips: "Do not leave the ship without a MK4 Diving Suit; you will die in 2 seconds."
+        },
+        // SEGREDOS
+        lab: {
+            title: "Sunken Laboratory",
+            stats: { Coords: "-1400, -850", Depth: "1,500m", Access: "Red Card" },
+            desc: "An abandoned facility. Legend says it was built to study the Leviathan's heart.",
+            loot: ["Infinite Battery", "Log #77"],
+            tips: "The Red Keycard is found in the Luxury Wreck near the surface."
+        }
+    };
+
+    function animateDetail(id) {
+        document.getElementById('main-wiki').style.opacity = '0';
+        setTimeout(() => {
+            showDetail(id);
+            document.getElementById('main-wiki').style.display = 'none';
+            document.getElementById('detail-page').style.display = 'block';
+            window.scrollTo(0,0);
+        }, 300);
+    }
+
+    function showDetail(id) {
+        const item = database[id] || { title: "Data Corrupted", stats: {}, desc: "Intel not found.", loot: [], tips: "None" };
+        const content = document.getElementById('detail-content');
+        let statsHtml = '';
+        for (const [k, v] of Object.entries(item.stats)) {
+            statsHtml += `<div class="stat-card"><b>${v}</b><small>${k}</small></div>`;
+        }
+        content.innerHTML = `
+            <div style="animation: fadeInUp 0.5s ease-out">
+                <h1 style="font-size:3.5rem; color:var(--electric-blue); margin:0;">${item.title}</h1>
+                <div class="stat-grid">${statsHtml}</div>
+                <section><h3>Full Report</h3><p>${item.desc}</p></section>
+                <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px;">
+                    <section style="margin:0;"><h3>Items / Info</h3><ul>${item.loot.map(l=>`<li>${l}</li>`).join('')}</ul></section>
+                    <section style="margin:0; border-left: 4px solid var(--gold);"><h3>Captain's Tip</h3><p>${item.tips}</p></section>
+                </div>
+            </div>`;
+    }
+
+    function goHome() {
+        document.getElementById('detail-page').style.display = 'none';
+        document.getElementById('main-wiki').style.display = 'block';
+        document.getElementById('main-wiki').style.opacity = '1';
+    }
+</script>
+</body>
+</html>
